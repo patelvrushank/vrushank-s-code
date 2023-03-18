@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Guidomia</string>
+    <string name="app_name">GUIDOMIA</string>
+    <string name="car_title">Tacoma 2021</string>
+    <string name="car_subhead">Get Your\'s now</string>
 </resources>
