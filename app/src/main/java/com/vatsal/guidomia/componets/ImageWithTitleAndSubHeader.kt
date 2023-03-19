@@ -17,10 +17,10 @@ import androidx.compose.ui.unit.sp
 import com.vatsal.guidomia.R
 
 /**
- *  ImageView with Title on bottom.
+ *  ImageView with Title and Subtitle at bottom.
  */
 @Composable
-fun ImageWithTitle() {
+fun ImageWithTitleAndSubHeader() {
     Box {
         Image(
             painter = painterResource(id = R.drawable.tacoma),

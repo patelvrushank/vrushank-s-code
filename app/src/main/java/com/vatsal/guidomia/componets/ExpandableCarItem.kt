@@ -27,17 +27,17 @@ import com.vatsal.guidomia.util.getImageDrawable
  *  Car Item to be displayed on @CarListScreen.
  *  @param carsItem - cardItem object
  *  @param isLast - boolean flag to determine the logic to add the divider item
- *  @param onClick - onclick click event on the car item.
  *  @param expandPositionDataState - Int value to determine the expand/collapse the view.
  *  @param index - index of the cardItem.
+ *  @param onClick - onclick click event on the car item.
  */
 @Composable
 fun ExpandableCarItem(
     carsItem: CarsItem,
     isLast: Boolean,
-    onClick: () -> Unit,
     expandPositionDataState: Int,
     index: Int,
+    onClick: () -> Unit,
 ) {
     val prosList = carsItem.prosList
     val filteredProsList = prosList?.filter { it?.isNotBlank() == true }
