@@ -1,4 +1,4 @@
-# guidomia-project
+# Jetpack compose.
 
 | col 1      | col 2      |
 |------------|-------------|
