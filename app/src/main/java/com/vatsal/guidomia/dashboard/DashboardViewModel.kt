@@ -44,8 +44,6 @@ class DashboardViewModel(private val app: Application) : AndroidViewModel(app) {
             val cars = adapter.fromJson(json)
             _carListLiveData.value = cars
 
-            println("Cars : ${cars.toString()}")
-
         } catch (exception: IOException) {
             Log.e(TAG, "Failed to retrieve json from asset folder $exception")
         }

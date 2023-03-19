@@ -24,19 +24,18 @@ fun CarListScreen(viewModel: DashboardViewModel) {
 
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         item(IMAGE_WITH_TITLE_POSITION) {
-            ImageWithTitle()
+            ImageWithTitleAndSubHeader()
         }
 
         itemsIndexed(carListDataState) { index, carItem ->
             ExpandableCarItem(
                 carsItem = carItem,
                 isLast = index == carListDataState.size.minus(1),
-                onClick = {
-                    viewModel.setExpandPosition(index)
-                },
                 expandPositionDataState = expandPositionDataState,
                 index = index
-            )
+            ){
+                viewModel.setExpandPosition(index)
+            }
         }
     }
 }
