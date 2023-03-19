@@ -2,8 +2,8 @@ package com.vatsal.guidomia.componets
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,22 +13,28 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.vatsal.guidomia.R
 import com.vatsal.guidomia.model.CarsItem
 import com.vatsal.guidomia.ui.theme.darkGrey
 import com.vatsal.guidomia.ui.theme.lightGrey
 import com.vatsal.guidomia.ui.theme.orange
 import com.vatsal.guidomia.util.convertToThousands
 import com.vatsal.guidomia.util.getImageDrawable
-import com.vatsal.guidomia.util.isScrolledToTheEnd
 
+/**
+ *  Car Item to be displayed on @CarListScreen.
+ */
 @Composable
-fun CarItem(carsItem: CarsItem, isLast : Boolean) {
+fun CarItem(carsItem: CarsItem, isLast: Boolean, onClick : () -> Unit, expandPositionDataState : Int) {
     Column(modifier = Modifier.background(Color.White)) {
+
+       // Collapsed view
         Row(
             modifier = Modifier
                 .background(lightGrey)
                 .padding(8.dp)
+                .clickable {
+                    onClick.invoke()
+                }
         ) {
             Image(
                 painter = painterResource(id = carsItem.model.getImageDrawable()),
@@ -40,7 +46,7 @@ fun CarItem(carsItem: CarsItem, isLast : Boolean) {
                 contentScale = ContentScale.FillHeight,
             )
 
-            Spacer(modifier = Modifier.width(4.dp))
+            Spacer(modifier = Modifier.width(8.dp))
 
             Column(
                 modifier = Modifier
@@ -49,7 +55,7 @@ fun CarItem(carsItem: CarsItem, isLast : Boolean) {
                 verticalArrangement = Arrangement.Center,
             ) {
                 Text(
-                    text = carsItem.model?: "",
+                    text = carsItem.model ?: "",
                     color = darkGrey,
                     fontSize = 18.sp
                 )
@@ -67,7 +73,8 @@ fun CarItem(carsItem: CarsItem, isLast : Boolean) {
             }
         }
 
-        if(!isLast) {
+        // Divider
+        if (!isLast) {
             Column(modifier = Modifier.height(24.dp), verticalArrangement = Arrangement.Center) {
                 Divider(
                     color = orange,

@@ -16,6 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vatsal.guidomia.R
 
+/**
+ *  ImageView with Title on bottom.
+ */
 @Composable
 fun ImageWithTitle() {
     Box {

@@ -16,6 +16,9 @@ import androidx.compose.ui.unit.dp
 import com.vatsal.guidomia.R
 import com.vatsal.guidomia.ui.theme.orange
 
+/**
+ * Rating View.
+ */
 @Composable
 fun RatingView(
     rating: Float,

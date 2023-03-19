@@ -9,20 +9,32 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import com.vatsal.guidomia.dashboard.DashboardViewModel
 
+private const val IMAGE_WITH_TITLE_POSITION = 0
+
+/**
+ *  Car List screen.
+ */
 @Composable
-fun DisplayLazyColumnList(viewModel: DashboardViewModel) {
+fun CarListScreen(viewModel: DashboardViewModel) {
     val carListLiveData = viewModel.carListLiveData
     val carListDataState by carListLiveData.observeAsState(emptyList())
 
+    val expandPositionLiveData = viewModel.expandPositionLiveData
+    val expandPositionDataState by expandPositionLiveData.observeAsState(0)
+
     LazyColumn(modifier = Modifier.fillMaxSize()) {
-        item(0) {
+        item(IMAGE_WITH_TITLE_POSITION) {
             ImageWithTitle()
         }
 
         itemsIndexed(carListDataState) { index, carItem ->
             CarItem(
                 carsItem = carItem,
-                isLast = index == carListLiveData.value?.size?.minus(1)
+                isLast = index == carListLiveData.value?.size?.minus(1),
+                onClick = {
+                    viewModel.setExpandPosition(index)
+                },
+                expandPositionDataState = expandPositionDataState
             )
         }
     }

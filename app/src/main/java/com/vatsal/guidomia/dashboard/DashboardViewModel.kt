@@ -18,6 +18,12 @@ class DashboardViewModel(private val app: Application) : AndroidViewModel(app) {
     private var _carListLiveData = MutableLiveData<List<CarsItem>>()
     val carListLiveData: LiveData<List<CarsItem>> = _carListLiveData
 
+    private var _expandPosition = MutableLiveData(0)
+    val expandPositionLiveData : LiveData<Int>  = _expandPosition
+
+    /**
+     * Fun to read the car_list.json file from assets folder.
+     */
     fun fetchCarList() {
         try {
             val inputStream = app.applicationContext.assets.open("car_list.json")
@@ -40,5 +46,9 @@ class DashboardViewModel(private val app: Application) : AndroidViewModel(app) {
         } catch (exception: IOException) {
             Log.e(TAG, "Failed to retrieve json from asset folder $exception")
         }
+    }
+
+    fun setExpandPosition(position : Int){
+        _expandPosition.value = position
     }
 }

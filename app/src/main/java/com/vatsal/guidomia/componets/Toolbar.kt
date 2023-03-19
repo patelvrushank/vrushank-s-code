@@ -21,8 +21,11 @@ import androidx.compose.ui.unit.dp
 import com.vatsal.guidomia.R
 import com.vatsal.guidomia.ui.theme.orange
 
+/**
+ *  Toolbar View.
+ */
 @Composable
-fun MyToolbar(title : String){
+fun Toolbar(title : String){
     TopAppBar(
         title = {
             Row(
