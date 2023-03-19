@@ -1,9 +1,44 @@
 package com.vatsal.guidomia.dashboard
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import android.util.Log
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.vatsal.guidomia.model.CarsItem
+import java.io.IOException
 
-class DashboardViewModel : ViewModel() {
-    init {
-        println("Vatsal, Viewmodel has been injected.!")
+class DashboardViewModel(private val app: Application) : AndroidViewModel(app) {
+
+    private val TAG = DashboardViewModel::class.java.simpleName
+
+    private var _carListLiveData = MutableLiveData<List<CarsItem>>()
+    val carListLiveData: LiveData<List<CarsItem>> = _carListLiveData
+
+    fun fetchCarList() {
+        try {
+            val inputStream = app.applicationContext.assets.open("car_list.json")
+            val json = inputStream.bufferedReader().use { it.readText() }
+
+            val moshi = Moshi.Builder()
+                .add(KotlinJsonAdapterFactory())
+                .build()
+            val adapter = moshi.adapter<List<CarsItem>>(
+                Types.newParameterizedType(
+                    List::class.java,
+                    CarsItem::class.java
+                )
+            )
+            val cars = adapter.fromJson(json)
+            _carListLiveData.value = cars
+
+            println("Cars : ${cars.toString()}")
+
+        } catch (exception: IOException) {
+            Log.e(TAG, "Failed to retrieve json from asset folder $exception")
+        }
     }
 }

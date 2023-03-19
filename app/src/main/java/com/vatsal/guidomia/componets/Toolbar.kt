@@ -14,8 +14,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.vatsal.guidomia.R
 import com.vatsal.guidomia.ui.theme.orange
 
 @Composable
@@ -25,9 +28,18 @@ fun MyToolbar(title : String){
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = title, color = Color.White, fontWeight = FontWeight.ExtraBold)
+                Text(
+                    text = title,
+                    color = Color.White,
+                    fontWeight = FontWeight.ExtraBold,
+                    fontFamily = FontFamily(
+                        Font(R.font.abril_fatface)
+                    )
+                )
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(8.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
                     horizontalArrangement = Arrangement.End
                 ) {
                     Icon(

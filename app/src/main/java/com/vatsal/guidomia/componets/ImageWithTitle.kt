@@ -10,12 +10,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vatsal.guidomia.R
 
 @Composable
-fun ImageWithTitle(){
+fun ImageWithTitle() {
     Box {
         Image(
             painter = painterResource(id = R.drawable.tacoma),
@@ -34,6 +36,9 @@ fun ImageWithTitle(){
                 text = stringResource(R.string.car_title),
                 color = Color.White,
                 fontSize = 28.sp,
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold
+                ),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 8.dp)
@@ -42,6 +47,9 @@ fun ImageWithTitle(){
                 text = stringResource(R.string.car_subhead),
                 color = Color.White,
                 fontSize = 14.sp,
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold
+                ),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 12.dp)
