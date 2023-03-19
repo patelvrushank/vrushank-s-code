@@ -28,13 +28,14 @@ fun CarListScreen(viewModel: DashboardViewModel) {
         }
 
         itemsIndexed(carListDataState) { index, carItem ->
-            CarItem(
+            ExpandableCarItem(
                 carsItem = carItem,
-                isLast = index == carListLiveData.value?.size?.minus(1),
+                isLast = index == carListDataState.size.minus(1),
                 onClick = {
                     viewModel.setExpandPosition(index)
                 },
-                expandPositionDataState = expandPositionDataState
+                expandPositionDataState = expandPositionDataState,
+                index = index
             )
         }
     }

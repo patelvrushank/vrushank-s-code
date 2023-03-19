@@ -11,6 +11,9 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.vatsal.guidomia.model.CarsItem
 import java.io.IOException
 
+/**
+ * Viewmodel class for dashboard activity.
+ */
 class DashboardViewModel(private val app: Application) : AndroidViewModel(app) {
 
     private val TAG = DashboardViewModel::class.java.simpleName

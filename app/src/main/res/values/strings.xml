@@ -2,4 +2,6 @@
     <string name="app_name">GUIDOMIA</string>
     <string name="car_title">Tacoma 2021</string>
     <string name="car_subhead">Get Your\'s now</string>
+    <string name="title_pros">Pros :</string>
+    <string name="title_cons">Cons :</string>
 </resources>
